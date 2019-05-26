@@ -19,11 +19,13 @@ def load_data(args):
     #data_dir = dossier 'data'
     data_df = pd.read_csv(os.path.join(args.data_dir, 'driving_log.csv'))
 
+    # X contient l'ensemble des noms des images de center, left, right
     X = data_df[['center', 'left', 'right']].values
+    # Y contient l'ensemble des valeurs de steering angle
+    y = data_df['steering'].values
     print(len(X))
     print('/' * 40)
-    y = data_df['steering'].values
-
+    # on divise le dataset
     X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=args.test_size, random_state=0)
 
     return X_train, X_valid, y_train, y_valid
