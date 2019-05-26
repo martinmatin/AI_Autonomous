@@ -25,7 +25,7 @@ def load_data(args):
     y = data_df['steering'].values
     print(len(X))
     print('/' * 40)
-    # on divise le dataset
+    # on divise le dataset, test_size = ratio (ici 20%)
     X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=args.test_size, random_state=0)
 
     return X_train, X_valid, y_train, y_valid
@@ -35,7 +35,12 @@ def build_model(args):
     """
     Modified NVIDIA model
     """
+    # Le modèle séquentiel est une pile linéaire de couches : A linear stack is a model without any branching. Every layer has one input and output. The output of one layer is the input of the layer below it.
     model = Sequential()
+    #Le modèle doit savoir quelle forme d’entrée il doit attendre. C’est la raison pour laquelle la première couche d’un modèle séquentiel doit recevoir les caractéristiques de la forme d’entrée (les autres couches peuvent quant à elles déterminer la forme de leurs entrées par inférence)
+    #INPUT_SHAPE = IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS = 66, 200, 3
+    # Lambda layers in Keras help you to implement layers or functionality that is not prebuilt and which do not require trainable weights
+    #Je comprends pas pq il fait /127 -1 ??
     model.add(Lambda(lambda x: x/127.5-1.0, input_shape=INPUT_SHAPE))
     model.add(Conv2D(24, 5, 5, activation='elu', subsample=(2, 2)))
     model.add(Conv2D(36, 5, 5, activation='elu', subsample=(2, 2)))
@@ -57,6 +62,7 @@ def train_model(model, args, X_train, X_valid, y_train, y_valid):
     """
     Train the model
     """
+    #ModelCheckpoint = Safe the model after each epoch
     checkpoint = ModelCheckpoint('model-{epoch:03d}.h5',
                                  monitor='val_loss',
                                  verbose=0,
