@@ -77,5 +77,5 @@ Les bibliothèques utiles pour la construction de l'architecture et l'entraînem
 
 1. **Panda** : Utile pour analyse de données (utilisée pour la gestion du fichier csv dans notre cas)
 2. **Numpy** : Utile pour la manipulation de données scientifiques (manipulation des matrices dans notre cas)
-3. **sklearn** : Facile l'apprentissage machine (la division du dataset dans notre cas)
+3. **sklearn** : Facilite l'apprentissage machine (la division du dataset dans notre cas)
 4. **Keras** : API de haut niveau pour les neural networks
