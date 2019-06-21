@@ -42,7 +42,7 @@ def telemetry(sid, data):
             timestamp = datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%S_%f')[:-3]
             image_filename = os.path.join(args.image_folder, timestamp)
             image.save('{}.jpg'.format(image_filename))
-            
+
         try:
             image = np.asarray(image)       # from PIL image to numpy array
             image = utils.preprocess(image) # apply the preprocessing
@@ -64,7 +64,7 @@ def telemetry(sid, data):
             send_control(steering_angle, throttle)
         except Exception as e:
             print(e)
-        
+
     else:
         # NOTE: DON'T EDIT THIS.
         sio.emit('manual', data={}, skip_sid=True)
@@ -103,6 +103,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     model = load_model(args.model)
+    print('-------------------')
+    print(args.model)
 
     if args.image_folder != '':
         print("Creating image folder at {}".format(args.image_folder))

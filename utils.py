@@ -1,11 +1,41 @@
 import cv2, os
 import numpy as np
 import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import time
+
 
 
 IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS = 66, 200, 3
 INPUT_SHAPE = (IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS)
 
+# def make_lut_u():
+#     return np.array([[[i,255-i,0] for i in range(256)]],dtype=np.uint8)
+#
+# def make_lut_v():
+#     return np.array([[[0,255-i,i] for i in range(256)]],dtype=np.uint8)
+# def print_img(image):
+#     #
+#     # #YUV = 3 channels for NVDIA models
+#     # y, u, v = cv2.split(image)
+#     # lut_u, lut_v = make_lut_u(), make_lut_v()
+#     # # Convert back to BGR so we can apply the LUT and stack the images
+#     # y = cv2.cvtColor(y, cv2.COLOR_GRAY2BGR)
+#     # u = cv2.cvtColor(u, cv2.COLOR_GRAY2BGR)
+#     # v = cv2.cvtColor(v, cv2.COLOR_GRAY2BGR)
+#     #
+#     # u_mapped = cv2.LUT(u, lut_u)
+#     # v_mapped = cv2.LUT(v, lut_v)
+#     #
+#     # result = np.vstack([image, y, u_mapped, v_mapped])
+#     #
+#     # cv2.imwrite('shed_combo.png', result)
+#     # # plt.figure()
+#     # # plt.imshow(result)
+#     # # plt.grid(False)
+#     # # plt.show()
+#     # time.sleep(5)
+#     print(exittt)
 
 def load_image(data_dir, image_file):
     """
