@@ -69,7 +69,7 @@ Tensorboard nous a permis d'analyser les résultats de nos apprentissages :
 
 
 
-<img src="img\1561109877519.png" style="zoom:60%" width="100" height="100"/>
+<img src="img\1561109877519.png" width="300"/>
 
 #### Entraînement
 
